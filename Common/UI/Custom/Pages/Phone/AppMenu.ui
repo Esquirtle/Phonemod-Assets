@@ -1,0 +1,20 @@
+@AppButton = Group {
+  Padding: (Horizontal: 3, Vertical: 3);
+  LayoutMode: Top;
+  FlexWeight: 1;
+  TextButton #APPBUTTON {
+    Anchor: (Width: 84, Height: 84);
+    Style: (
+      Default: (Background: #b3b3b3)
+    );
+  }
+  Label #APPNAME {
+    Text: "App";
+    Style: (FontSize: 12, Alignment: Center);
+  }
+};
+
+Group #APPHolder {
+  Anchor: (Top: 12, Height: 500, Width: 360);
+  LayoutMode: LeftCenterWrap;
+}

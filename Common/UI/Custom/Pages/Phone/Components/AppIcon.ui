@@ -1,0 +1,4 @@
+Group #AppIcon {
+  Anchor: (Width: 1, Height: 1);
+  Background: "Common/Icons/Default.png";
+}

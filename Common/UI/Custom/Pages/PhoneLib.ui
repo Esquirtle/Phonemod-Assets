@@ -1,0 +1,63 @@
+@MainApp = Group {
+  LayoutMode: Top;
+  FlexWeight: 1;
+  Anchor: (Width: 360, Height:600);
+  ItemGrid #RewardItemGrid {
+    SlotsPerRow: 2;
+    Style: (
+      SlotSize: 64,
+      SlotIconSize: 64 -3,
+      SlotSpacing: 5,
+      SlotBackground: "../Common/BlockSelectorSlotBackground.png"
+    );            
+  }
+
+};
+
+@AppTopbar = Group {
+  LayoutMode: CenterMiddle;
+  Anchor: (Width: 360, Height:30);
+  Background: #7a7a7a;
+};
+
+@PhoneScrollbar = ScrollbarStyle(
+  Spacing: 6,
+  Size: 6,
+  Background: #7a7a7a,
+  Handle: #cacaca,
+  HoveredHandle: #b3b3b3,
+  DraggedHandle: #808080
+);
+
+@AppButton = Group {
+  LayoutMode: Top;
+  FlexWeight: 1;
+  Padding: (Horizontal: 3, Vertical: 3);
+  Anchor: (Width: 84, Height: 100);
+  Group #DebugContainer {
+    Visible: true;
+    Anchor: (Width: 15, Height: 15);
+    TextButton #DEBUGAPPBUTTON {
+      Anchor: (Width: 16, Height: 16);
+      Style: (
+        Default: (Background: "Playground/Calls.png"),
+        Hovered: (Background: #9e9e9e),
+        Pressed: (Background: #7a7a7a)
+      );
+    }
+  } 
+  TextButton #APPBUTTON {
+    Anchor: (Width: 84, Height: 84);
+    Style: (
+      Default: (Background: "Common/Buttons/Primary.png"),
+      Hovered: (Background: #9e9e9e),
+      Pressed: (Background: #7a7a7a)
+    );
+  }
+
+  Label #APPNAME {
+    Anchor: (Top: 8, Width: 84, Height: 16);
+    Text: "App";
+    Style: (FontSize: 12, Alignment: Center, RenderBold: true);
+  }
+};
