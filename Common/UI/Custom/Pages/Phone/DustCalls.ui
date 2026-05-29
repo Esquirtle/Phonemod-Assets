@@ -5,11 +5,13 @@
 $D = "../DustLib.ui";
 
 Group {
+  FlexWeight: 1;
   LayoutMode: Top;
 
   $D.@DustShellHeader #CallsHeader { @Title = "Calls"; }
 
   Group #CallsPanel {
+    FlexWeight: 1;
     LayoutMode: Top;
     Background: $D.@DustPanelBackground;
     Padding: (Full: $D.@DustPanelPadding);

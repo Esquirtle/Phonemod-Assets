@@ -1,19 +1,24 @@
 // Settings app rendered with the Dust component library.
-// Root contract: #PhoneNumberLabel (the theme picker is appendInline'd by Java).
+// Root contract: #PhoneNumberLabel (device id), #ThemeLabel (current theme),
+// and the three theme buttons #ThemeDefault / #ThemeDark / #ThemeCompact, which
+// SettingsApp binds. FlexWeight:1 lets the panel fill the shell content area.
 $D = "../DustLib.ui";
 
 Group {
+  FlexWeight: 1;
   LayoutMode: Top;
 
   $D.@DustShellHeader #SettingsHeader { @Title = "Settings"; }
 
   Group #SettingsPanel {
+    FlexWeight: 1;
     LayoutMode: Top;
     Background: $D.@DustPanelBackground;
     Padding: (Full: $D.@DustPanelPadding);
 
     Group #DeviceNumberSection {
       LayoutMode: Top;
+      Anchor: (Bottom: $D.@DustShellSpacing);
 
       Label {
         Text: "Phone Number";
@@ -24,6 +29,19 @@ Group {
         Text: "---";
         Style: (FontSize: 18, RenderBold: true, TextColor: $D.@DustTextPrimary);
       }
+    }
+
+    Group #ThemeSection {
+      LayoutMode: Top;
+
+      Label #ThemeLabel {
+        Text: "Theme";
+        Anchor: (Bottom: 6);
+        Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
+      }
+      $D.@DustShellSecondaryButton #ThemeDefault { Anchor: (Height: 36, Bottom: 6); Text: "Default"; }
+      $D.@DustShellSecondaryButton #ThemeDark    { Anchor: (Height: 36, Bottom: 6); Text: "Dark"; }
+      $D.@DustShellSecondaryButton #ThemeCompact { Anchor: (Height: 36); Text: "Compact"; }
     }
   }
 }

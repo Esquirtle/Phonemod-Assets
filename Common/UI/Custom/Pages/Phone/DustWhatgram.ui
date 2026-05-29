@@ -5,6 +5,7 @@
 $D = "../DustLib.ui";
 
 Group {
+  FlexWeight: 1;
   LayoutMode: Top;
 
   $D.@DustShellHeader #WhatgramHeader { @Title = "Whatgram"; }
