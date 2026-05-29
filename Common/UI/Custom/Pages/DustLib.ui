@@ -67,18 +67,26 @@ $C = "Common.ui";
   Background: @DustShellBackground;
 };
 
+// Customize per instance by overriding the named expressions, e.g.
+//   $D.@DustShellHeader #MyHeader { @Title = "Whatgram"; }
+// (Named-expression override is the supported template-customization path —
+// see Common.ui @TextButton's @Text. Do not override nested child properties.)
 @DustShellHeader = Group {
+  @Title = "Title";
+  @Subtitle = "";
+  @ShowSubtitle = false;
   LayoutMode: Top;
   Anchor: (Height: @DustShellHeaderHeight);
   Background: @DustShellHeaderBackground;
   Padding: (Horizontal: @DustShellPadding);
   Label #DustHeaderTitle {
-    Text: "Title";
+    Text: @Title;
     Style: (FontSize: 15, RenderBold: true, TextColor: @DustTextPrimary);
   }
   Label #DustHeaderSubtitle {
+    Visible: @ShowSubtitle;
     Anchor: (Height: 18);
-    Text: "Subtitle";
+    Text: @Subtitle;
     Style: (FontSize: 11, TextColor: @DustTextSecondary);
   }
 };

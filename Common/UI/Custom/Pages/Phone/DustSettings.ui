@@ -1,15 +1,15 @@
 // Settings app rendered with the Dust component library.
+// Root contract: #PhoneNumberLabel (the theme picker is appendInline'd by Java).
 $D = "../DustLib.ui";
 
 Group {
   LayoutMode: Top;
 
-  $D.@DustShellHeader #SettingsHeader {
-    #DustHeaderTitle { Text: "Settings"; }
-    #DustHeaderSubtitle { Visible: false; }
-  }
+  $D.@DustShellHeader #SettingsHeader { @Title = "Settings"; }
 
-  $D.@DustShellPanel #SettingsPanel {
+  Group #SettingsPanel {
+    LayoutMode: Top;
+    Background: $D.@DustPanelBackground;
     Padding: (Full: $D.@DustPanelPadding);
 
     Group #DeviceNumberSection {

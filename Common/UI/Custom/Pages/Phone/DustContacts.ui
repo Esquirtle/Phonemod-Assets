@@ -1,22 +1,23 @@
 // Contacts app rendered with the Dust component library.
+// Root contract: #AddContactButton, #ContactsList.
 $D = "../DustLib.ui";
 
 Group {
   LayoutMode: Top;
 
-  // Header laid out horizontally so the title and "Add" button share the row.
-  $D.@DustShellHeader #ContactsHeader {
-    LayoutMode: LeftCenterWrap;
-    #DustHeaderTitle { FlexWeight: 1; Text: "Contacts"; }
-    #DustHeaderSubtitle { Visible: false; }
+  $D.@DustShellHeader #ContactsHeader { @Title = "Contacts"; }
 
-    $D.@DustShellSecondaryButton #AddContactButton {
-      Anchor: (Width: 70, Height: 28);
-      Text: "Add";
-    }
+  // Add-contact action. Kept as a top-level sibling (not embedded in the header
+  // template) so we only override the button instance's own properties.
+  $D.@DustShellSecondaryButton #AddContactButton {
+    Anchor: (Height: 32, Bottom: $D.@DustShellSpacing);
+    Text: "Add Contact";
   }
 
-  $D.@DustShellPanel #ContactsPanel {
+  Group #ContactsPanel {
+    LayoutMode: Top;
+    Background: $D.@DustPanelBackground;
+    Padding: (Full: $D.@DustPanelPadding);
 
     // Scrolling contacts list. Themeable background (role: appContent).
     Group #ContactsList {
