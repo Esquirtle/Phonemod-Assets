@@ -1,5 +1,8 @@
 $C = "Common.ui";
-
+@DeviceWide = 316;
+@DeviceHeight = 650;
+@ScreenWide = @DeviceWide - 8;
+@ScreenHeight = @DeviceHeight - 12;
 @AppWidth = 360;
 @AppContentHeight = 600;
 @TopbarHeight = 30;
@@ -9,7 +12,6 @@ $C = "Common.ui";
 
 @AppTopbar = Group {
   LayoutMode: CenterMiddle;
-  Anchor: (Width: @AppWidth, Height: @TopbarHeight);
   Background: #7a7a7a;
 };
 
@@ -56,7 +58,6 @@ $C = "Common.ui";
 };
 
 @AppContentArea = Group {
-  Anchor: (Width: @AppWidth, Height: @ContentHeightFull);
   LayoutMode: TopScrolling;
   ScrollbarStyle: @PhoneScrollbar;
 };
