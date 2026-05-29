@@ -1,11 +1,11 @@
 Group #WhatgramChatEntry {
-  Anchor: (Width: 360, Height: 72);
+  Anchor: (Height: 72);
   Padding: (Full: 8);
   LayoutMode: Left;
   Background: #9db48d;
   Group #Cheat {
     TextButton #Button {
-      Anchor: (Width: 344, Height: 56);
+      Anchor: (Height: 56);
       Style: (
         Default: (Background: #b3b3b3),
         Hovered: (Background: #808080)
