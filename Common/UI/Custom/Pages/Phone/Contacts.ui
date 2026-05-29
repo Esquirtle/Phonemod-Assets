@@ -9,7 +9,7 @@ Group {
     Label {
       FlexWeight: 2;
       Text: "Contacts";
-      Style: (FontSize: 16, VerticalAlignment: Center,  HorizontalAlignment: Center);
+      Style: (FontSize: 16, VerticalAlignment: Center, HorizontalAlignment: Center);
     }
     TextButton #AddContactButton {
       Anchor: (Width: 70, Height: 24);
@@ -17,16 +17,12 @@ Group {
       Text: "Add";
       Style: (
         Default: (Background: #43D69A, LabelStyle: (FontSize: 12, Alignment: Center)),
-        Hovered: (Background: #2eb87d,LabelStyle: (FontSize: 16, Alignment: Center))
+        Hovered: (Background: #2eb87d, LabelStyle: (FontSize: 16, Alignment: Center))
       );
     }
   }
 
-  Group #ContactsList {
-    Anchor: (Width: 360, Height: 490);
+  $P.@AppContentArea #ContactsList {
     Background: #c0ff7d;
-    LayoutMode: TopScrolling;
-    ScrollbarStyle: $P.@PhoneScrollbar;
-
   }
 }

@@ -1,11 +1,15 @@
-@MainApp = Group {
-  LayoutMode: Top;
-  FlexWeight: 1;
-  Anchor: (Width: 360, Height:600);
-};
+$C = "Common.ui";
+
+@AppWidth = 360;
+@AppContentHeight = 600;
+@TopbarHeight = 30;
+@ContentHeightFull = 570;
+@ContentHeightWithInput = 520;
+@ContentHeightWithDial = 514;
+
 @AppTopbar = Group {
   LayoutMode: CenterMiddle;
-  Anchor: (Width: 360, Height:30);
+  Anchor: (Width: @AppWidth, Height: @TopbarHeight);
   Background: #7a7a7a;
 };
 
@@ -34,7 +38,7 @@
         Pressed: (Background: #7a7a7a)
       );
     }
-  } 
+  }
   TextButton #APPBUTTON {
     Padding: (Full: 5);
     Anchor: (Width: 64, Height: 64);
@@ -44,10 +48,61 @@
       Pressed: (Background: #7a7a7a)
     );
   }
-
   Label #APPNAME {
     Anchor: (Top: 8, Width: 64, Height: 16);
     Text: "App";
     Style: (FontSize: 12, Alignment: Center, RenderBold: true);
+  }
+};
+
+@AppContentArea = Group {
+  Anchor: (Width: @AppWidth, Height: @ContentHeightFull);
+  LayoutMode: TopScrolling;
+  ScrollbarStyle: @PhoneScrollbar;
+};
+
+@AppFullPageView = Group {
+  Anchor: (Width: @AppWidth, Height: @AppContentHeight);
+  LayoutMode: Top;
+  Padding: (Full: 16);
+};
+
+@PrimaryActionButton = TextButton {
+  Anchor: (Width: 154, Height: 44);
+  Style: (
+    Default: (Background: #43D69A, LabelStyle: (FontSize: 14, Alignment: Center)),
+    Hovered: (Background: #2eb87d, LabelStyle: (FontSize: 14, Alignment: Center))
+  );
+};
+
+@DangerActionButton = TextButton {
+  Anchor: (Width: 154, Height: 44);
+  Style: (
+    Default: (Background: #d94f4f, LabelStyle: (FontSize: 14, Alignment: Center)),
+    Hovered: (Background: #b03030, LabelStyle: (FontSize: 14, Alignment: Center))
+  );
+};
+
+@ListEntryRow = Group {
+  Anchor: (Width: @AppWidth, Height: 60);
+  LayoutMode: Left;
+  Padding: (Horizontal: 10, Vertical: 8);
+};
+
+@MessageInputRow = Group {
+  Anchor: (Width: @AppWidth, Height: 50);
+  Background: #9e9e9e;
+  LayoutMode: Left;
+  Padding: (Full: 8);
+  $C.@TextField #MessageInput {
+    Anchor: (Width: 302, Height: 50);
+    PlaceholderText: "Message...";
+  }
+  TextButton #SendButton {
+    Anchor: (Width: 50, Height: 50);
+    Style: (
+      Default: (Background: #c5d349, LabelStyle: (FontSize: 12, HorizontalAlignment: Center, VerticalAlignment: Center)),
+      Hovered: (Background: #b6b82e, LabelStyle: (FontSize: 14, HorizontalAlignment: Center, VerticalAlignment: Center))
+    );
   }
 };

@@ -31,9 +31,8 @@ Group {
     }
   }
 
-  Group #CallHistoryList {
-    Anchor: (Width: 360, Height: 434);
+  $P.@AppContentArea #CallHistoryList {
+    Anchor: (Width: 360, Height: 514);
     Background: #cacaca;
-    LayoutMode: TopScrolling;
   }
 }

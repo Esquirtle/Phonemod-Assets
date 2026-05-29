@@ -38,7 +38,7 @@ Group #PhoneOverlay {
           }
         }
         Group #AppContent {
-          Anchor: (Width: @ScreenWide-8);
+          Anchor: (Width: 360);
           LayoutMode: Top;
           Group #APPHolder {
             LayoutMode: LeftCenterWrap;

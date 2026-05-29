@@ -10,7 +10,7 @@ Group {
   }
 
   Group #ActiveCallContent {
-    Anchor: (Width: 360, Height: 490);
+    Anchor: (Width: 360, Height: 570);
     Background: #1a1a1a;
     LayoutMode: CenterMiddle;
 
@@ -29,13 +29,9 @@ Group {
         Padding: (Bottom: 40);
       }
 
-      TextButton #HangUpButton {
+      $P.@DangerActionButton #HangUpButton {
         Anchor: (Width: 150, Height: 54);
         Text: "Hang Up";
-        Style: (
-          Default: (Background: #d94f4f, LabelStyle: (FontSize: 12, Alignment: Center)),
-          Hovered: (Background: #b03030, LabelStyle: (FontSize: 14, Alignment: Center))
-        );
       }
     }
   }

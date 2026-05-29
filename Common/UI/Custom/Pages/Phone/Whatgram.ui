@@ -10,10 +10,7 @@ Group {
     }
   }
 
-  Group #WhatgramContent {
-    Anchor: (Width: 360, Height: 490);
+  $P.@AppContentArea #WhatgramContent {
     Background: #cacaca;
-    LayoutMode: TopScrolling;
-    ScrollbarStyle: $P.@PhoneScrollbar;
   }
 }

@@ -1,4 +1,7 @@
+$P = "../../PhoneLib.ui";
+
 Group #CallHistoryEntry {
+  Anchor: (Width: 360, Height: 56);
   Padding: (Full: 6);
   LayoutMode: Left;
   Background: #b0bec5;
@@ -10,21 +13,16 @@ Group #CallHistoryEntry {
 
     Label #ContactName {
       Text: "Name (555-0000)";
-      Style: (FontSize: 12, Alignment: Start);
+      Style: (FontSize: 12);
     }
     Label #CallStatus {
       Text: "Outgoing";
-      Style: (FontSize: 10, Alignment: Start);
-
+      Style: (FontSize: 10);
     }
   }
 
-  TextButton #CallBackButton {
+  $P.@PrimaryActionButton #CallBackButton {
     Anchor: (Width: 54, Height: 44);
     Text: "Call";
-    Style: (
-      Default: (Background: #43D69A, LabelStyle: (FontSize: 12, Alignment: Center)),
-      Hovered: (Background: #2eb87d, LabelStyle: (FontSize: 14, Alignment: Center))
-    );
   }
 }

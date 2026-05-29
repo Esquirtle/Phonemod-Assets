@@ -1,4 +1,5 @@
 Group #Bubble {
+  Anchor: (Width: 360);
   LayoutMode: Top;
   Padding: (Full: 6);
   Background: #b3e6d0;

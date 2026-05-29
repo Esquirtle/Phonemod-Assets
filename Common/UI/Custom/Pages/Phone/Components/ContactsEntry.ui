@@ -1,9 +1,6 @@
-@ChatButtonLabel = LabelStyle (
-  FontSize: 10,
-  HorizontalAlignment: Center,
-  VerticalAlignment: Center
-);
-@RemoveButtonLabel = LabelStyle (
+$P = "../../PhoneLib.ui";
+
+@ChatButtonLabel = LabelStyle(
   FontSize: 10,
   HorizontalAlignment: Center,
   VerticalAlignment: Center
@@ -32,21 +29,14 @@ Group #ContactsEntry {
       );
     }
 
-    TextButton #CallButton {
+    $P.@PrimaryActionButton #CallButton {
       Anchor: (Width: 38, Height: 38);
       Text: "Call";
-      Style: (
-        Default: (Background: #43D69A, LabelStyle: (FontSize: 12, HorizontalAlignment: Center, VerticalAlignment: Center)),
-        Hovered: (Background: #2eb87d, LabelStyle: (FontSize: 14, HorizontalAlignment: Center, VerticalAlignment: Center))
-      );
     }
-    TextButton #RemoveButton {
+
+    $P.@DangerActionButton #RemoveButton {
       Anchor: (Width: 38, Height: 38);
       Text: "Remove";
-      Style: (
-        Default: (Background: #d94f4f, LabelStyle: @RemoveButtonLabel),
-        Hovered: (Background: #b03030, LabelStyle: (FontSize: 14, HorizontalAlignment: Center, VerticalAlignment: Center))
-      );
     }
   }
 }

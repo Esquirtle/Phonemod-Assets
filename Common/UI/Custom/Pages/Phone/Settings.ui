@@ -10,7 +10,7 @@ Group {
   }
 
   Group #SettingsContent {
-    Anchor: (Width: 360, Height: 490);
+    Anchor: (Width: 360, Height: 570);
     Background: #1a1a1a;
     LayoutMode: CenterMiddle;
 

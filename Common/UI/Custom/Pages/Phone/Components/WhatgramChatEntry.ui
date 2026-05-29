@@ -1,16 +1,17 @@
 Group #WhatgramChatEntry {
+  Anchor: (Width: 360, Height: 72);
   Padding: (Full: 8);
   LayoutMode: Left;
   Background: #9db48d;
-  Group #Cheat{
+  Group #Cheat {
     TextButton #Button {
-      Anchor: (Width: 310, Height: 55);
+      Anchor: (Width: 344, Height: 56);
       Style: (
         Default: (Background: #b3b3b3),
         Hovered: (Background: #808080)
       );
     }
-    Group #Contact{
+    Group #Contact {
       LayoutMode: Left;
       Padding: (Horizontal: 5);
       Group #Avatar {
@@ -24,7 +25,5 @@ Group #WhatgramChatEntry {
         Style: (Alignment: Center);
       }
     }
-
   }
-
 }

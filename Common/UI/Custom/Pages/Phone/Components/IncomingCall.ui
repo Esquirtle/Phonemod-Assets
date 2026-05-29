@@ -10,7 +10,7 @@ Group {
   }
 
   Group #IncomingCallContent {
-    Anchor: (Width: 360, Height: 490);
+    Anchor: (Width: 360, Height: 570);
     Background: #1a1a1a;
     LayoutMode: CenterMiddle;
 
@@ -33,22 +33,14 @@ Group {
         Anchor: (Width: 320, Height: 60);
         LayoutMode: Left;
 
-        TextButton #AnswerButton {
+        $P.@PrimaryActionButton #AnswerButton {
           Anchor: (Width: 150, Height: 54);
           Text: "Answer";
-          Style: (
-            Default: (Background: #43D69A, LabelStyle: (FontSize: 12, Alignment: Center)),
-            Hovered: (Background: #2eb87d, LabelStyle: (FontSize: 14, Alignment: Center))
-          );
         }
 
-        TextButton #DeclineButton {
+        $P.@DangerActionButton #DeclineButton {
           Anchor: (Width: 150, Height: 54);
           Text: "Decline";
-          Style: (
-            Default: (Background: #d94f4f, LabelStyle: (FontSize: 12, Alignment: Center)),
-            Hovered: (Background: #b03030, LabelStyle: (FontSize: 14, Alignment: Center))
-          );
         }
       }
     }

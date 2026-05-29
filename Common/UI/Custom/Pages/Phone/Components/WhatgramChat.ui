@@ -1,4 +1,5 @@
 $P = "../../PhoneLib.ui";
+
 Group {
   LayoutMode: Top;
 
@@ -17,39 +18,17 @@ Group {
       FlexWeight: 3;
       Text: "Contact";
     }
-    TextButton #CallButton {
+    $P.@PrimaryActionButton #CallButton {
       FlexWeight: 1;
       Anchor: (Width: 54, Height: 30);
       Text: "Call";
-      Style: (
-        Default: (Background: #43D69A, LabelStyle: (FontSize: 12, Alignment: Center)),
-        Hovered: (Background: #2eb87d, LabelStyle: (FontSize: 14, Alignment: Center))
-      );
     }
   }
 
-  Group #MessageList {
-    Anchor: (Width: 360,Height: 440);
+  $P.@AppContentArea #MessageList {
+    Anchor: (Width: 360, Height: 520);
     Background: #cacaca;
-    LayoutMode: TopScrolling;
-    ScrollbarStyle: $P.@PhoneScrollbar;
   }
 
-  Group {
-    Anchor: (Height: 50);
-    Background: #9e9e9e;
-    LayoutMode: Left;
-    Padding: (Full: 8);
-    TextField #MessageInput {
-      Anchor: (Width: 302, Height: 50);
-      PlaceholderText: "Message...";
-    }
-    TextButton #SendButton {
-      Anchor: (Width: 50, Height: 50);
-      Style: (
-        Default: (Background: #c5d349, LabelStyle: (FontSize: 12, HorizontalAlignment: Center, VerticalAlignment: Center)),
-        Hovered: (Background: #b6b82e, LabelStyle: (FontSize: 14, HorizontalAlignment: Center, VerticalAlignment: Center))
-      );
-    }
-  }
+  $P.@MessageInputRow #ChatInputRow { }
 }
