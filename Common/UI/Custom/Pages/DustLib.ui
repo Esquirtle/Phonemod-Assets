@@ -1,0 +1,255 @@
+$C = "Common.ui";
+
+// DustLib: shared device UI components and reusable page building blocks.
+//
+// This is the single source of truth for the Dust look: it declares both the
+// design tokens (@Dust* values below) AND the component templates that consume
+// them. It is fully self-contained — import it directly and reference its
+// members with the $ prefix, e.g. `$D.@DustShellHeader` and `$D.@DustTextPrimary`.
+//
+// The token values here are the DEFAULT (light) palette. Alternate themes
+// (Dark, Compact, ...) are NOT separate .ui files — Hytale named expressions are
+// file-scoped and cannot be overridden across documents. Instead, themes are
+// data: palettes live in Server/Phonemod/Themes/<Theme>.json and are applied at
+// runtime by ThemeService, which sets background colors on the themeable
+// selectors declared in each device asset's "Selectors" map.
+
+@DustShellPadding = 14;
+@DustShellSpacing = 10;
+@DustShellBackground = #151c26;
+@DustPanelBackground = #1f2936;
+@DustPanelAltBackground = #192032;
+@DustShellHeaderBackground = #202c3a;
+@DustShellTopbarBackground = #1d2634;
+@DustSectionHeaderBackground = #182032;
+@DustShellDividerBackground = #233046;
+@DustShellHeaderHeight = 44;
+@DustShellTopbarHeight = 36;
+@DustShellButtonRowHeight = 44;
+@DustShellSectionHeaderHeight = 28;
+@DustPanelPadding = 12;
+@DustShellGridPadding = 8;
+@DustShellAppButtonWidth = 84;
+@DustShellAppButtonHeight = 100;
+@DustAppIconSize = 64;
+@DustShellListEntryHeight = 58;
+@DustShellInputRowHeight = 54;
+@DustTextFieldHeight = 38;
+@DustShellMessageInputHeight = 54;
+@DustShellSendButtonWidth = 50;
+@DustShellInputBackground = #162031;
+@DustShellMessageInputBackground = #1a2534;
+@DustAppButtonBackground = #2f3f57;
+@DustAppButtonHover = #405a79;
+@DustAppButtonPressed = #26334b;
+@DustShellListEntryBackground = #1f2a38;
+@DustShellActionButtonHeight = 44;
+@DustShellActionButtonBackground = #2f3f57;
+@DustShellActionButtonHover = #405a79;
+@DustShellActionButtonPressed = #26334b;
+@DustShellSecondaryButtonBackground = #2a3450;
+@DustShellSecondaryButtonHover = #334165;
+@DustShellSecondaryButtonPressed = #1f2738;
+@DustShellDangerButtonBackground = #d94f4f;
+@DustShellDangerButtonHover = #c13f3f;
+@DustShellDangerButtonPressed = #922f2f;
+@DustShellSendButtonBackground = #4ba96f;
+@DustShellSendButtonHover = #62bd86;
+@DustShellSendButtonPressed = #3c7b56;
+@DustShellBadgeBackground = @DustShellDangerButtonBackground;
+@DustTextPrimary = #e3eef7;
+@DustTextSecondary = #96a9be;
+@DustDanger = #d94f4f;
+
+@DustShellPage = Group {
+  LayoutMode: Top;
+  Padding: (Full: @DustShellPadding);
+  Background: @DustShellBackground;
+};
+
+@DustShellHeader = Group {
+  LayoutMode: Top;
+  Anchor: (Height: @DustShellHeaderHeight);
+  Background: @DustShellHeaderBackground;
+  Padding: (Horizontal: @DustShellPadding);
+  Label #DustHeaderTitle {
+    Text: "Title";
+    Style: (FontSize: 15, RenderBold: true, TextColor: @DustTextPrimary);
+  }
+  Label #DustHeaderSubtitle {
+    Anchor: (Height: 18);
+    Text: "Subtitle";
+    Style: (FontSize: 11, TextColor: @DustTextSecondary);
+  }
+};
+
+@DustShellTopbar = Group {
+  LayoutMode: Left;
+  Anchor: (Height: @DustShellTopbarHeight);
+  Background: @DustShellTopbarBackground;
+  Padding: (Horizontal: @DustShellPadding);
+};
+
+@DustShellButtonRow = Group {
+  LayoutMode: Left;
+  Spacing: @DustShellSpacing;
+  Anchor: (Height: @DustShellButtonRowHeight);
+};
+
+@DustShellPanel = Group {
+  LayoutMode: Top;
+  Background: @DustPanelBackground;
+  Padding: (Full: @DustPanelPadding);
+};
+
+@DustShellCard = Group {
+  LayoutMode: Top;
+  Background: @DustPanelAltBackground;
+  Padding: (Full: @DustPanelPadding);
+};
+
+@DustShellSectionHeader = Group {
+  LayoutMode: Left;
+  Anchor: (Height: @DustShellSectionHeaderHeight);
+  Background: @DustSectionHeaderBackground;
+  Padding: (Horizontal: @DustShellPadding);
+  Label #DustSectionTitle {
+    Text: "Section";
+    Style: (FontSize: 11, RenderBold: true, RenderUppercase: true, TextColor: @DustTextSecondary);
+  }
+};
+
+@DustShellDivider = Group {
+  Anchor: (Height: 1);
+  Background: @DustShellDividerBackground;
+};
+
+@DustShellAppGrid = Group {
+  LayoutMode: LeftCenterWrap;
+  Padding: (Horizontal: @DustShellGridPadding, Vertical: @DustShellGridPadding);
+  Spacing: @DustShellSpacing;
+};
+
+@DustShellAppButton = Group {
+  LayoutMode: Top;
+  FlexWeight: 1;
+  Padding: (Horizontal: 6, Vertical: 3);
+  Anchor: (Width: @DustShellAppButtonWidth, Height: @DustShellAppButtonHeight);
+  Group #DustAppDebug {
+    Visible: false;
+    Anchor: (Width: 15, Height: 15);
+  }
+  TextButton #DustAppButton {
+    Padding: (Full: 5);
+    Anchor: (Width: @DustAppIconSize, Height: @DustAppIconSize);
+    Style: (
+      Default: (Background: @DustAppButtonBackground, LabelStyle: (FontSize: 12, Alignment: Center, TextColor: @DustTextPrimary)),
+      Hovered: (Background: @DustAppButtonHover),
+      Pressed: (Background: @DustAppButtonPressed)
+    );
+  }
+  Label #DustAppName {
+    Anchor: (Top: 8, Width: @DustAppIconSize, Height: 16);
+    Text: "App";
+    Style: (FontSize: 12, Alignment: Center, RenderBold: true, TextColor: @DustTextPrimary);
+  }
+};
+
+@DustShellListEntry = Group {
+  LayoutMode: Left;
+  Anchor: (Height: @DustShellListEntryHeight);
+  Padding: (Horizontal: 10, Vertical: 8);
+  Background: @DustShellListEntryBackground;
+};
+
+@DustShellListEntryText = Label {
+  Style: (FontSize: 14, TextColor: @DustTextPrimary);
+};
+
+@DustShellListEntrySubtext = Label {
+  Style: (FontSize: 11, TextColor: @DustTextSecondary);
+};
+
+@DustShellActions = Group {
+  LayoutMode: Left;
+  Spacing: 10;
+};
+
+@DustShellActionButton = TextButton {
+  Anchor: (Height: @DustShellActionButtonHeight);
+  Style: (
+    Default: (Background: @DustShellActionButtonBackground, LabelStyle: (FontSize: 14, Alignment: Center, TextColor: @DustTextPrimary)),
+    Hovered: (Background: @DustShellActionButtonHover),
+    Pressed: (Background: @DustShellActionButtonPressed)
+  );
+};
+
+@DustShellSecondaryButton = TextButton {
+  Anchor: (Height: @DustShellActionButtonHeight);
+  Style: (
+    Default: (Background: @DustShellSecondaryButtonBackground, LabelStyle: (FontSize: 14, Alignment: Center, TextColor: @DustTextPrimary)),
+    Hovered: (Background: @DustShellSecondaryButtonHover),
+    Pressed: (Background: @DustShellSecondaryButtonPressed)
+  );
+};
+
+@DustShellDangerButton = TextButton {
+  Anchor: (Height: @DustShellActionButtonHeight);
+  Style: (
+    Default: (Background: @DustShellDangerButtonBackground, LabelStyle: (FontSize: 14, Alignment: Center, TextColor: @DustTextPrimary)),
+    Hovered: (Background: @DustShellDangerButtonHover),
+    Pressed: (Background: @DustShellDangerButtonPressed)
+  );
+};
+
+@DustShellInputRow = Group {
+  LayoutMode: Left;
+  Anchor: (Height: @DustShellInputRowHeight);
+  Background: @DustShellInputBackground;
+  Padding: (Horizontal: 10, Vertical: 8);
+  Spacing: 8;
+  $C.@TextField #DustTextField {
+    FlexWeight: 1;
+    Anchor: (Height: @DustTextFieldHeight);
+    PlaceholderText: "Enter text...";
+  }
+};
+
+@DustShellFormRow = Group {
+  LayoutMode: Top;
+  Padding: (Vertical: 6);
+  Label #DustFormLabel {
+    Text: "Field";
+    Style: (FontSize: 12, RenderBold: true, TextColor: @DustTextSecondary);
+  }
+};
+
+@DustShellMessageInput = Group {
+  LayoutMode: Left;
+  Anchor: (Height: @DustShellMessageInputHeight);
+  Background: @DustShellMessageInputBackground;
+  Padding: (Full: 8);
+  $C.@TextField #DustMessageInput {
+    FlexWeight: 1;
+    Anchor: (Height: @DustTextFieldHeight);
+    PlaceholderText: "Message...";
+  }
+  TextButton #DustSendButton {
+    Anchor: (Width: @DustShellSendButtonWidth, Height: @DustTextFieldHeight);
+    Style: (
+      Default: (Background: @DustShellSendButtonBackground, LabelStyle: (FontSize: 12, Alignment: Center, TextColor: @DustTextPrimary)),
+      Hovered: (Background: @DustShellSendButtonHover),
+      Pressed: (Background: @DustShellSendButtonPressed)
+    );
+  }
+};
+
+@DustShellNotificationBadge = Group {
+  Anchor: (Width: 24, Height: 24);
+  Background: @DustShellBadgeBackground;
+  Label #DustBadgeValue {
+    Anchor: (Width: 24, Height: 24);
+    Text: "1";
+    Style: (Alignment: Center, FontSize: 12, TextColor: #ffffff, RenderBold: true);
+  }
+};

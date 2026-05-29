@@ -1,0 +1,22 @@
+// Whatgram conversation-list root, rendered with the Dust component library.
+// Contract: the Java app appends conversation rows into #WhatgramContent, and
+// replaces the whole #AppContent with WhatgramChat.ui for the chat view — so this
+// root only owns the topbar + the scrolling list container.
+$D = "../DustLib.ui";
+
+Group {
+  LayoutMode: Top;
+
+  $D.@DustShellHeader #WhatgramHeader {
+    #DustHeaderTitle { Text: "Whatgram"; }
+    #DustHeaderSubtitle { Visible: false; }
+  }
+
+  // Scrollable conversation list. Themeable background (role: appContent).
+  Group #WhatgramContent {
+    FlexWeight: 1;
+    LayoutMode: TopScrolling;
+    Background: $D.@DustShellListEntryBackground;
+    Padding: (Full: $D.@DustPanelPadding);
+  }
+}

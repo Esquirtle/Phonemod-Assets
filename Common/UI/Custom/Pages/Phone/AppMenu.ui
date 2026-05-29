@@ -1,0 +1,4 @@
+Group #AppMenu{
+    FlexWeight: 1
+    LayoutMode: LeftCenterWrap;
+}

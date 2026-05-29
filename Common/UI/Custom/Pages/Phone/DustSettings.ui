@@ -1,0 +1,30 @@
+// Settings app rendered with the Dust component library.
+$D = "../DustLib.ui";
+
+Group {
+  LayoutMode: Top;
+
+  $D.@DustShellHeader #SettingsHeader {
+    #DustHeaderTitle { Text: "Settings"; }
+    #DustHeaderSubtitle { Visible: false; }
+  }
+
+  $D.@DustShellPanel #SettingsPanel {
+    Spacing: $D.@DustShellSpacing;
+    Padding: (Full: $D.@DustPanelPadding);
+
+    Group #DeviceNumberSection {
+      LayoutMode: Top;
+      Spacing: 6;
+
+      Label {
+        Text: "Phone Number";
+        Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
+      }
+      Label #PhoneNumberLabel {
+        Text: "---";
+        Style: (FontSize: 18, RenderBold: true, TextColor: $D.@DustTextPrimary);
+      }
+    }
+  }
+}
