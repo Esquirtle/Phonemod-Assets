@@ -6,7 +6,7 @@ Group #APPBUTTONENTRY {
   TextButton #APPBUTTON {
     Anchor: (Width: 64, Height: 64);
     Style: (
-      Default: (Background: "Common/UI/Custom/Pages/Phone/Contacts.png"),
+      Default: (Background: "../Contacts.png"),
       Hovered: (Background: #808080),
       Pressed: (Background: #7a7a7a)
     );

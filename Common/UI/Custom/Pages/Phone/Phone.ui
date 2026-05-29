@@ -38,9 +38,9 @@ Group #PhoneOverlay {
           }
         }
         Group #AppContent {
-          Anchor: (Width: 360);
           LayoutMode: Top;
           Group #APPHolder {
+            Padding: (Horizontal: 8, Vertical: 8);
             LayoutMode: LeftCenterWrap;
           }
         }

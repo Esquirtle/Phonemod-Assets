@@ -26,7 +26,6 @@ Group {
   }
 
   $P.@AppContentArea #MessageList {
-    Anchor: (Width: 360, Height: 520);
     Background: #cacaca;
   }
 
