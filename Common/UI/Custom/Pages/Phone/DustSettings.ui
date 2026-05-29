@@ -10,15 +10,14 @@ Group {
   }
 
   $D.@DustShellPanel #SettingsPanel {
-    Spacing: $D.@DustShellSpacing;
     Padding: (Full: $D.@DustPanelPadding);
 
     Group #DeviceNumberSection {
       LayoutMode: Top;
-      Spacing: 6;
 
       Label {
         Text: "Phone Number";
+        Anchor: (Bottom: 6);
         Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
       }
       Label #PhoneNumberLabel {

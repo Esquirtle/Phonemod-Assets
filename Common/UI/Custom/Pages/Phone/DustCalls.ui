@@ -10,19 +10,18 @@ Group {
   }
 
   $D.@DustShellPanel #CallsPanel {
-    Spacing: $D.@DustShellSpacing;
 
     // Dialer row: number field + call button.
+    // (Child gaps come from Anchor margins; .ui has no element-level Spacing.)
     Group #DialRow {
       LayoutMode: Left;
-      Anchor: (Height: $D.@DustShellInputRowHeight);
+      Anchor: (Height: $D.@DustShellInputRowHeight, Bottom: $D.@DustShellSpacing);
       Background: $D.@DustShellInputBackground;
       Padding: (Full: 8);
-      Spacing: $D.@DustShellSpacing;
 
       TextField #DialInput {
         FlexWeight: 1;
-        Anchor: (Height: $D.@DustTextFieldHeight);
+        Anchor: (Height: $D.@DustTextFieldHeight, Right: $D.@DustShellSpacing);
         PlaceholderText: "Enter number...";
       }
 

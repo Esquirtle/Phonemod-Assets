@@ -17,7 +17,6 @@ Group {
   }
 
   $D.@DustShellPanel #ContactsPanel {
-    Spacing: $D.@DustShellSpacing;
 
     // Scrolling contacts list. Themeable background (role: appContent).
     Group #ContactsList {

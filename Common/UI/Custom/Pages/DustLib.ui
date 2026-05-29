@@ -92,7 +92,6 @@ $C = "Common.ui";
 
 @DustShellButtonRow = Group {
   LayoutMode: Left;
-  Spacing: @DustShellSpacing;
   Anchor: (Height: @DustShellButtonRowHeight);
 };
 
@@ -127,7 +126,6 @@ $C = "Common.ui";
 @DustShellAppGrid = Group {
   LayoutMode: LeftCenterWrap;
   Padding: (Horizontal: @DustShellGridPadding, Vertical: @DustShellGridPadding);
-  Spacing: @DustShellSpacing;
 };
 
 @DustShellAppButton = Group {
@@ -172,7 +170,6 @@ $C = "Common.ui";
 
 @DustShellActions = Group {
   LayoutMode: Left;
-  Spacing: 10;
 };
 
 @DustShellActionButton = TextButton {
@@ -207,7 +204,6 @@ $C = "Common.ui";
   Anchor: (Height: @DustShellInputRowHeight);
   Background: @DustShellInputBackground;
   Padding: (Horizontal: 10, Vertical: 8);
-  Spacing: 8;
   $C.@TextField #DustTextField {
     FlexWeight: 1;
     Anchor: (Height: @DustTextFieldHeight);
