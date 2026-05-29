@@ -2,11 +2,10 @@ $Common = "../../Common.ui";
 $APPMENU = "MainApp.ui";
 // Full-screen dimmed overlay — centers the phone window
 Group #PhoneOverlay {
-  Background: PatchStyle(Color: #000000(0.5));
-  LayoutMode: CenterMiddle;
+  Background: PatchStyle(Color: #000000(0.2));
 
   Group #Phone {
-    Anchor: (Width: 390, Height: 620, Left: 520);
+    Anchor: (Width: 390, Height: 620, Right:140, Bottom: 60);
     Background: PatchStyle(Color: #1a1a1a(0.95), Border: 1);
     LayoutMode: Top;
 

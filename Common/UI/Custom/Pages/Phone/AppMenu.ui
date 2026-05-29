@@ -1,9 +1,9 @@
 @AppButton = Group {
-  Padding: (Horizontal: 3, Vertical: 3);
+  Padding: (Horizontal: 6, Vertical: 3);
   LayoutMode: Top;
   FlexWeight: 1;
   TextButton #APPBUTTON {
-    Anchor: (Width: 84, Height: 84);
+    Anchor: (Width: 64, Height: 64);
     Style: (
       Default: (Background: #b3b3b3)
     );

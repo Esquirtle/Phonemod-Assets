@@ -1,0 +1,19 @@
+Group #APPBUTTONENTRY {
+  LayoutMode: Top;
+  FlexWeight: 1;
+  Padding: (Horizontal: 3, Vertical: 3);
+  Anchor: (Width: 84, Height: 100);
+  TextButton #APPBUTTON {
+    Anchor: (Width: 64, Height: 64);
+    Style: (
+      Default: (Background: "Common/UI/Custom/Pages/Phone/Contacts.png"),
+      Hovered: (Background: #808080),
+      Pressed: (Background: #7a7a7a)
+    );
+  }
+  Label #APPNAME {
+    Anchor: (Top: 8, Width: 84, Height: 16);
+    Text: "App";
+    Style: (FontSize: 12, Alignment: Center, RenderBold: true);
+  }
+}

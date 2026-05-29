@@ -32,31 +32,32 @@
 @AppButton = Group {
   LayoutMode: Top;
   FlexWeight: 1;
-  Padding: (Horizontal: 3, Vertical: 3);
+  Padding: (Horizontal: 6, Vertical: 3);
   Anchor: (Width: 84, Height: 100);
   Group #DebugContainer {
-    Visible: true;
+    Visible: false;
     Anchor: (Width: 15, Height: 15);
     TextButton #DEBUGAPPBUTTON {
       Anchor: (Width: 16, Height: 16);
       Style: (
-        Default: (Background: "Playground/Calls.png"),
+        Default: (Background: "Playground/Icons/Calls.png"),
         Hovered: (Background: #9e9e9e),
         Pressed: (Background: #7a7a7a)
       );
     }
   } 
   TextButton #APPBUTTON {
-    Anchor: (Width: 84, Height: 84);
+    Padding: (Full: 5);
+    Anchor: (Width: 64, Height: 64);
     Style: (
-      Default: (Background: "Common/Buttons/Primary.png"),
+      Default: (Background: "Playground/Calls.png"),
       Hovered: (Background: #9e9e9e),
       Pressed: (Background: #7a7a7a)
     );
   }
 
   Label #APPNAME {
-    Anchor: (Top: 8, Width: 84, Height: 16);
+    Anchor: (Top: 8, Width: 64, Height: 16);
     Text: "App";
     Style: (FontSize: 12, Alignment: Center, RenderBold: true);
   }
