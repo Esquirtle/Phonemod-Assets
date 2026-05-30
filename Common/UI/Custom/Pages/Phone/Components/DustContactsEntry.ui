@@ -3,11 +3,8 @@
 // #RemoveButton.
 $D = "../../DustLib.ui";
 
-Group #ContactsEntry {
-  LayoutMode: Left;
+$D.@DustShellListEntry #ContactsEntry {
   Anchor: (Height: $D.@DustShellListEntryHeight, Bottom: 6);
-  Background: $D.@DustShellListEntryBackground;
-  Padding: (Horizontal: 10, Vertical: 8);
 
   Label #ContactName {
     FlexWeight: 1;

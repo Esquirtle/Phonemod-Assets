@@ -27,6 +27,8 @@ $C = "Common.ui";
 @DustShellTopbarHeight = 36;
 @DustShellButtonRowHeight = 44;
 @DustShellSectionHeaderHeight = 28;
+@DustStatusBarHeight = 28;
+@DustHomeBarHeight = 52;
 @DustPanelPadding = 12;
 @DustShellGridPadding = 8;
 @DustShellAppButtonWidth = 84;
@@ -161,11 +163,75 @@ $C = "Common.ui";
   }
 };
 
+// App-grid button matching the framework contract: a #APPBUTTONENTRY root
+// holding a #APPBUTTON (bound + icon) and a #APPNAME label (text set at runtime).
+// Per-app files differ ONLY by the icon, passed via @Icon. Keep the @Icon literal
+// in the per-app file so its relative texture path resolves from that file.
+@PhoneAppButton = Group {
+  @Icon = "Common/Icons/Default.png";
+  LayoutMode: Top;
+  FlexWeight: 1;
+  Padding: (Horizontal: 3, Vertical: 3);
+  Anchor: (Width: @DustShellAppButtonWidth, Height: @DustShellAppButtonHeight);
+  TextButton #APPBUTTON {
+    Anchor: (Width: @DustAppIconSize, Height: @DustAppIconSize);
+    Style: (
+      Default: (Background: @Icon),
+      Hovered: (Background: @DustAppButtonHover),
+      Pressed: (Background: @DustAppButtonPressed)
+    );
+  }
+  Label #APPNAME {
+    Anchor: (Top: 8, Width: @DustShellAppButtonWidth, Height: 16);
+    Text: "App";
+    Style: (FontSize: 12, Alignment: Center, RenderBold: true, TextColor: @DustTextPrimary);
+  }
+};
+
 @DustShellListEntry = Group {
   LayoutMode: Left;
   Anchor: (Height: @DustShellListEntryHeight);
   Padding: (Horizontal: 10, Vertical: 8);
   Background: @DustShellListEntryBackground;
+};
+
+// Scrolling content list. Apps append rows into instances of this. Add a new id
+// (and any padding) at the instance site, e.g.
+//   $D.@DustScrollList #ContactsList { Padding: (Full: $D.@DustPanelPadding); }
+@DustScrollList = Group {
+  FlexWeight: 1;
+  LayoutMode: TopScrolling;
+  Background: @DustShellListEntryBackground;
+};
+
+// Full-screen centered surface for device-driven takeover screens (call
+// overlays, prompts). Add the centered content column as a child.
+@DustCenterScreen = Group {
+  FlexWeight: 1;
+  LayoutMode: CenterMiddle;
+  Background: @DustShellBackground;
+};
+
+// ── Device shell chrome ─────────────────────────────────────────────────────
+// Reusable shell building blocks. Each owns a framework selector that the device
+// asset's JSON must declare and the runtime (DeviceShell -> DevicePage) drives.
+// Compose these inside a concrete device frame (e.g. Phone.ui keeps the bezel
+// image + geometry and instantiates these for its chrome).
+//
+//   Shell selector contract
+//   ───────────────────────
+//   #BottomBar   home bar surface     device JSON: Selectors.bottombar
+//   #HomeButton  home key             device JSON: HomeButtonSelector
+//   (more added as further chrome pieces land: #AppContent, #APPHolder, #TopBar)
+
+// Persistent home bar. Owns #BottomBar (themed: bottombar) and #HomeButton.
+@DustHomeBar = Group {
+  LayoutMode: CenterMiddle;
+  Anchor: (Height: @DustHomeBarHeight);
+  $C.@TertiaryTextButton #HomeButton {
+    @Text = "O";
+    Anchor: (Width: 44, Height: 44);
+  }
 };
 
 @DustShellListEntryText = Label {

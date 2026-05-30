@@ -1,4 +1,4 @@
-$Common = "../../Common.ui";
+$D = "../DustLib.ui";
 
 // ── Phone shell geometry ────────────────────────────────────────────────────
 // The device is a fixed-size window pinned to the lower-right of the screen.
@@ -11,7 +11,6 @@ $Common = "../../Common.ui";
 @ScreenInsetTop   = 70;   // top bezel (speaker/camera band)
 @ScreenInsetBot   = 8;    // gap above the home bar
 @StatusBarHeight  = 28;
-@HomeBarHeight    = 52;
 
 Group #PhoneOverlay {
   Background: PatchStyle(Color: #000000(0.2));
@@ -33,15 +32,17 @@ Group #PhoneOverlay {
         FlexWeight: 1;
         LayoutMode: Top;
 
-        // Status bar (replaced while an app owns the screen).
+        // Status bar. Themed at runtime (device selector role: topbar); the Dust
+        // token below is just the pre-theme default so it matches the dark shell.
         Group #TopBar {
           Anchor: (Height: @StatusBarHeight);
           LayoutMode: Left;
-          Background: #333333;
+          Background: $D.@DustShellTopbarBackground;
           Label {
             FlexWeight: 1;
             Padding: (Horizontal: 8);
             Text: "HyTel";
+            Style: (FontSize: 12, RenderBold: true, TextColor: $D.@DustTextPrimary);
           }
           Group #HytelLogo {
             Background: "../Phone/hytel_logo.png";
@@ -62,14 +63,7 @@ Group #PhoneOverlay {
       }
     }
 
-    // Persistent home bar.
-    Group #BottomBar {
-      Anchor: (Height: @HomeBarHeight);
-      LayoutMode: CenterMiddle;
-      $Common.@TertiaryTextButton #HomeButton {
-        @Text = "O";
-        Anchor: (Width: 44, Height: 44);
-      }
-    }
+    // Persistent home bar. Chrome + selectors (#BottomBar/#HomeButton) from DustLib.
+    $D.@DustHomeBar #BottomBar { }
   }
 }

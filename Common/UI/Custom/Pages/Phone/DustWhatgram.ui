@@ -44,19 +44,12 @@ Group {
   }
 
   // Themed panel (role: appPanel) holding the list and the composer.
-  Group #WhatgramPanel {
+  $D.@DustShellPanel #WhatgramPanel {
     FlexWeight: 1;
-    LayoutMode: Top;
-    Background: $D.@DustPanelBackground;
-    Padding: (Full: $D.@DustPanelPadding);
 
     // Scrolling list. Holds conversation rows in the list view, message bubbles
     // in the chat view. Themeable background (role: appContent).
-    Group #WhatgramContent {
-      FlexWeight: 1;
-      LayoutMode: TopScrolling;
-      Background: $D.@DustShellListEntryBackground;
-    }
+    $D.@DustScrollList #WhatgramContent { }
 
     // Chat composer. Hidden in the conversation-list view.
     Group #WhatgramComposer {

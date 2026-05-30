@@ -15,17 +15,11 @@ Group {
     Text: "Add Contact";
   }
 
-  Group #ContactsPanel {
+  $D.@DustShellPanel #ContactsPanel {
     FlexWeight: 1;
-    LayoutMode: Top;
-    Background: $D.@DustPanelBackground;
-    Padding: (Full: $D.@DustPanelPadding);
 
     // Scrolling contacts list. Themeable background (role: appContent).
-    Group #ContactsList {
-      FlexWeight: 1;
-      LayoutMode: TopScrolling;
-      Background: $D.@DustShellListEntryBackground;
+    $D.@DustScrollList #ContactsList {
       Padding: (Full: $D.@DustPanelPadding);
     }
   }

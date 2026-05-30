@@ -2,11 +2,7 @@
 // Contract: app sets #CallerName.Text and binds #AnswerButton / #DeclineButton.
 $D = "../../DustLib.ui";
 
-Group {
-  FlexWeight: 1;
-  LayoutMode: CenterMiddle;
-  Background: $D.@DustShellBackground;
-
+$D.@DustCenterScreen {
   Group {
     LayoutMode: Top;
     Padding: (Full: 24);

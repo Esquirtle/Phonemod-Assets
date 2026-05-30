@@ -2,11 +2,7 @@
 // Contract: app sets #PartnerLabel.Text and binds #HangUpButton.
 $D = "../../DustLib.ui";
 
-Group {
-  FlexWeight: 1;
-  LayoutMode: CenterMiddle;
-  Background: $D.@DustShellBackground;
-
+$D.@DustCenterScreen {
   Group {
     LayoutMode: Top;
     Padding: (Full: 24);

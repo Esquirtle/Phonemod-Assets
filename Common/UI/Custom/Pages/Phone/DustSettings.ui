@@ -10,11 +10,8 @@ Group {
 
   $D.@DustShellHeader #SettingsHeader { @Title = "Settings"; }
 
-  Group #SettingsPanel {
+  $D.@DustShellPanel #SettingsPanel {
     FlexWeight: 1;
-    LayoutMode: Top;
-    Background: $D.@DustPanelBackground;
-    Padding: (Full: $D.@DustPanelPadding);
 
     Group #DeviceNumberSection {
       LayoutMode: Top;

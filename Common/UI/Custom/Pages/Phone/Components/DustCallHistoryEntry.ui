@@ -3,11 +3,8 @@
 // #CallBackButton.
 $D = "../../DustLib.ui";
 
-Group #CallHistoryEntry {
-  LayoutMode: Left;
+$D.@DustShellListEntry #CallHistoryEntry {
   Anchor: (Height: $D.@DustShellListEntryHeight, Bottom: 6);
-  Background: $D.@DustShellListEntryBackground;
-  Padding: (Horizontal: 10, Vertical: 8);
 
   Group #CallInfo {
     FlexWeight: 1;
