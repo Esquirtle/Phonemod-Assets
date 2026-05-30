@@ -10,7 +10,6 @@ $D = "../DustLib.ui";
 @ScreenInsetX     = 4;    // left/right bezel (symmetric)
 @ScreenInsetTop   = 70;   // top bezel (speaker/camera band)
 @ScreenInsetBot   = 8;    // gap above the home bar
-@StatusBarHeight  = 28;
 
 Group #PhoneOverlay {
   Background: PatchStyle(Color: #000000(0.2));
@@ -26,40 +25,19 @@ Group #PhoneOverlay {
       LayoutMode: Top;
       Padding: (Top: @ScreenInsetTop, Horizontal: @ScreenInsetX, Bottom: @ScreenInsetBot);
 
-      // App content area. Apps and the home grid load into #AppContent
-      // (the device ContentSelector); it fills the remaining screen height.
+      // Persistent status bar (themed: topbar) — sits ABOVE the content area so
+      // it survives apps/home navigation clearing #AppContent. Selector #TopBar
+      // + chrome from DustLib.
+      $D.@DustStatusBar #TopBar {
+        @Logo    = "Phone/hytel_logo.png";
+        @Battery = "Phone/battery_icon.png";
+      }
+
+      // App content area (the device ContentSelector). Apps and the home grid
+      // (#APPHolder, built by DevicePage) load here; it fills remaining height.
       Group #AppContent {
         FlexWeight: 1;
         LayoutMode: Top;
-
-        // Status bar. Themed at runtime (device selector role: topbar); the Dust
-        // token below is just the pre-theme default so it matches the dark shell.
-        Group #TopBar {
-          Anchor: (Height: @StatusBarHeight);
-          LayoutMode: Left;
-          Background: $D.@DustShellTopbarBackground;
-          Label {
-            FlexWeight: 1;
-            Padding: (Horizontal: 8);
-            Text: "HyTel";
-            Style: (FontSize: 12, RenderBold: true, TextColor: $D.@DustTextPrimary);
-          }
-          Group #HytelLogo {
-            Background: "../Phone/hytel_logo.png";
-            Anchor: (Width: 20, Height: 20);
-          }
-          Group #BatteryIcon {
-            Background: "../Phone/battery_icon.png";
-            Anchor: (Width: 20, Height: 20, Left: 6, Right: 4);
-          }
-        }
-
-        // Home app grid (rebuilt by the framework).
-        Group #APPHolder {
-          FlexWeight: 1;
-          Padding: (Full: 8);
-          LayoutMode: LeftCenterWrap;
-        }
       }
     }
 

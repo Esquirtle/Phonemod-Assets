@@ -222,9 +222,36 @@ $C = "Common.ui";
 //
 //   Shell selector contract
 //   ───────────────────────
+//   #TopBar      status bar surface   device JSON: Selectors.topbar
 //   #BottomBar   home bar surface     device JSON: Selectors.bottombar
 //   #HomeButton  home key             device JSON: HomeButtonSelector
-//   (more added as further chrome pieces land: #AppContent, #APPHolder, #TopBar)
+//   (more as further chrome lands: #AppContent, #APPHolder)
+
+// Status bar. Owns #TopBar (themed: topbar). Carrier label baked; logo/battery
+// images come from the concrete shell. @Logo/@Battery resolve from THIS file's
+// folder (Pages/) — pass e.g. "Phone/hytel_logo.png", not "../Phone/...".
+@DustStatusBar = Group {
+  @Carrier = "HyTel";
+  @Logo    = "Phone/hytel_logo.png";
+  @Battery = "Phone/battery_icon.png";
+  LayoutMode: Left;
+  Anchor: (Height: @DustStatusBarHeight);
+  Background: @DustShellTopbarBackground;
+  Label {
+    FlexWeight: 1;
+    Padding: (Horizontal: 8);
+    Text: @Carrier;
+    Style: (FontSize: 12, RenderBold: true, TextColor: @DustTextPrimary);
+  }
+  Group #HytelLogo {
+    Background: @Logo;
+    Anchor: (Width: 20, Height: 20);
+  }
+  Group #BatteryIcon {
+    Background: @Battery;
+    Anchor: (Width: 20, Height: 20, Left: 6, Right: 4);
+  }
+};
 
 // Persistent home bar. Owns #BottomBar (themed: bottombar) and #HomeButton.
 @DustHomeBar = Group {
