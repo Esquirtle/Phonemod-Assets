@@ -1,0 +1,20 @@
+// One conversation-list row, appended into #WhatgramContent.
+// Contract: the app sets #Name.Text and binds #Button (opens the chat).
+$D = "../../DustLib.ui";
+
+Group #WhatgramConvEntry {
+  LayoutMode: Left;
+  Anchor: (Height: $D.@DustShellListEntryHeight, Bottom: 6);
+  Background: $D.@DustShellListEntryBackground;
+  Padding: (Horizontal: 10, Vertical: 8);
+
+  Label #Name {
+    FlexWeight: 1;
+    Text: "Name";
+    Style: (FontSize: 14, TextColor: $D.@DustTextPrimary);
+  }
+  $D.@DustShellActionButton #Button {
+    Anchor: (Width: 64, Height: 38);
+    Text: "Open";
+  }
+}

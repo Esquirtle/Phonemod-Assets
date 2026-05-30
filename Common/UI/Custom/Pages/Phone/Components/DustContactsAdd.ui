@@ -1,0 +1,47 @@
+// Add-contact form. Replaces the Contacts content area while in ADD_CONTACT
+// state. Contract: app reads #NumberInput.Value / #NameInput.Value and binds
+// #SaveButton / #CancelButton.
+$D = "../../DustLib.ui";
+$C = "../../Common.ui";
+
+Group {
+  FlexWeight: 1;
+  LayoutMode: Top;
+
+  $D.@DustShellHeader #AddContactHeader { @Title = "Add Contact"; }
+
+  Group #AddContactPanel {
+    FlexWeight: 1;
+    LayoutMode: Top;
+    Background: $D.@DustPanelBackground;
+    Padding: (Full: $D.@DustPanelPadding);
+
+    Label {
+      Text: "Phone number";
+      Anchor: (Bottom: 6);
+      Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
+    }
+    $C.@TextField #NumberInput {
+      Anchor: (Height: $D.@DustTextFieldHeight, Bottom: 12);
+      PlaceholderText: "e.g. 555-1234";
+    }
+
+    Label {
+      Text: "Display name";
+      Anchor: (Bottom: 6);
+      Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
+    }
+    $C.@TextField #NameInput {
+      Anchor: (Height: $D.@DustTextFieldHeight, Bottom: 16);
+      PlaceholderText: "e.g. Big Tony";
+    }
+
+    Group #FormButtons {
+      LayoutMode: Left;
+      Anchor: (Height: $D.@DustShellActionButtonHeight);
+
+      $D.@DustShellActionButton #SaveButton  { FlexWeight: 1; Anchor: (Right: 6); Text: "Save"; }
+      $D.@DustShellDangerButton #CancelButton { FlexWeight: 1; Text: "Cancel"; }
+    }
+  }
+}

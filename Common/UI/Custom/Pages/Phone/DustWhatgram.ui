@@ -1,20 +1,80 @@
-// Whatgram conversation-list root, rendered with the Dust component library.
-// Contract: the Java app appends conversation rows into #WhatgramContent and
-// swaps the whole #AppContent for WhatgramChat.ui in the chat view — so this
-// root only owns the header + the scrolling list container.
+// Whatgram root, rendered entirely with the Dust component library.
+//
+// SINGLE-ROOT contract — this one document owns BOTH the conversation-list view
+// and the chat view. The Java app never swaps the shell content area; it only
+// toggles child visibility and re-fills #WhatgramContent. This keeps the themed
+// selectors (#WhatgramHeader / #WhatgramPanel / #WhatgramContent) alive at all
+// times, which is what previously crashed when the chat view replaced the root
+// out from under ThemeService.
+//
+//   #WhatgramHeader   header bar — shows "Whatgram" (list) OR back/name/call (chat)
+//   #WhatgramPanel    themed panel surface (role: appPanel)
+//     #WhatgramContent  scrolling list — conversation rows OR message bubbles
+//     #WhatgramComposer message input row, hidden in the list view
 $D = "../DustLib.ui";
+$C = "../Common.ui";
 
 Group {
   FlexWeight: 1;
   LayoutMode: Top;
 
-  $D.@DustShellHeader #WhatgramHeader { @Title = "Whatgram"; }
+  // Header doubles as the chat top bar. Back/Call start hidden; the app shows
+  // them (and retitles #HeaderTitle) when a chat is open. Themeable: appHeader.
+  Group #WhatgramHeader {
+    LayoutMode: Left;
+    Anchor: (Height: $D.@DustShellHeaderHeight);
+    Background: $D.@DustShellHeaderBackground;
+    Padding: (Horizontal: $D.@DustShellPadding);
 
-  // Scrollable conversation list. Themeable background (role: appContent).
-  Group #WhatgramContent {
+    $D.@DustShellSecondaryButton #BackButton {
+      Visible: false;
+      Anchor: (Width: 52, Height: 30, Right: 8);
+      Text: "Back";
+    }
+    Label #HeaderTitle {
+      FlexWeight: 1;
+      Text: "Whatgram";
+      Style: (FontSize: 15, RenderBold: true, TextColor: $D.@DustTextPrimary);
+    }
+    $D.@DustShellActionButton #CallButton {
+      Visible: false;
+      Anchor: (Width: 52, Height: 30);
+      Text: "Call";
+    }
+  }
+
+  // Themed panel (role: appPanel) holding the list and the composer.
+  Group #WhatgramPanel {
     FlexWeight: 1;
-    LayoutMode: TopScrolling;
-    Background: $D.@DustShellListEntryBackground;
+    LayoutMode: Top;
+    Background: $D.@DustPanelBackground;
     Padding: (Full: $D.@DustPanelPadding);
+
+    // Scrolling list. Holds conversation rows in the list view, message bubbles
+    // in the chat view. Themeable background (role: appContent).
+    Group #WhatgramContent {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      Background: $D.@DustShellListEntryBackground;
+    }
+
+    // Chat composer. Hidden in the conversation-list view.
+    Group #WhatgramComposer {
+      Visible: false;
+      LayoutMode: Left;
+      Anchor: (Height: $D.@DustShellMessageInputHeight, Top: $D.@DustShellSpacing);
+      Background: $D.@DustShellMessageInputBackground;
+      Padding: (Full: 8);
+
+      $C.@TextField #MessageInput {
+        FlexWeight: 1;
+        Anchor: (Height: $D.@DustTextFieldHeight, Right: $D.@DustShellSpacing);
+        PlaceholderText: "Message...";
+      }
+      $D.@DustShellActionButton #SendButton {
+        Anchor: (Width: $D.@DustShellSendButtonWidth, Height: $D.@DustTextFieldHeight);
+        Text: "Send";
+      }
+    }
   }
 }
