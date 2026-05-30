@@ -1,7 +1,7 @@
-// Settings app rendered with the Dust component library.
-// Root contract: #PhoneNumberLabel (device id), #ThemeLabel (current theme),
-// and the three theme buttons #ThemeDefault / #ThemeDark / #ThemeCompact, which
-// SettingsApp binds. FlexWeight:1 lets the panel fill the shell content area.
+// Settings app (Dust). MOCKED framework reference: it demonstrates reading and
+// writing every DeviceSettings dimension, not a finished settings product.
+// SettingsApp sets the #*Label values and binds each choice button. The panel
+// scrolls because the sections exceed one screen.
 $D = "../DustLib.ui";
 
 Group {
@@ -12,33 +12,54 @@ Group {
 
   $D.@DustShellPanel #SettingsPanel {
     FlexWeight: 1;
+    LayoutMode: TopScrolling;
 
     Group #DeviceNumberSection {
       LayoutMode: Top;
       Anchor: (Bottom: $D.@DustShellSpacing);
-
-      Label {
-        Text: "Phone Number";
-        Anchor: (Bottom: 6);
-        Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
-      }
-      Label #PhoneNumberLabel {
-        Text: "---";
-        Style: (FontSize: 18, RenderBold: true, TextColor: $D.@DustTextPrimary);
-      }
+      Label { Text: "Phone Number"; Anchor: (Bottom: 6); Style: (FontSize: 12, TextColor: $D.@DustTextSecondary); }
+      Label #PhoneNumberLabel { Text: "---"; Style: (FontSize: 18, RenderBold: true, TextColor: $D.@DustTextPrimary); }
     }
 
     Group #ThemeSection {
       LayoutMode: Top;
+      Anchor: (Bottom: $D.@DustShellSpacing);
+      Label #ThemeLabel { Text: "Theme"; Anchor: (Bottom: 6); Style: (FontSize: 12, TextColor: $D.@DustTextSecondary); }
+      $D.@DustShellSecondaryButton #ThemeDefault { Anchor: (Height: 32, Bottom: 5); Text: "Default"; }
+      $D.@DustShellSecondaryButton #ThemeDark    { Anchor: (Height: 32, Bottom: 5); Text: "Dark"; }
+      $D.@DustShellSecondaryButton #ThemeCompact { Anchor: (Height: 32); Text: "Compact"; }
+    }
 
-      Label #ThemeLabel {
-        Text: "Theme";
-        Anchor: (Bottom: 6);
-        Style: (FontSize: 12, TextColor: $D.@DustTextSecondary);
-      }
-      $D.@DustShellSecondaryButton #ThemeDefault { Anchor: (Height: 36, Bottom: 6); Text: "Default"; }
-      $D.@DustShellSecondaryButton #ThemeDark    { Anchor: (Height: 36, Bottom: 6); Text: "Dark"; }
-      $D.@DustShellSecondaryButton #ThemeCompact { Anchor: (Height: 36); Text: "Compact"; }
+    Group #WallpaperSection {
+      LayoutMode: Top;
+      Anchor: (Bottom: $D.@DustShellSpacing);
+      Label #WallpaperLabel { Text: "Wallpaper"; Anchor: (Bottom: 6); Style: (FontSize: 12, TextColor: $D.@DustTextSecondary); }
+      $D.@DustShellSecondaryButton #WallpaperLogo { Anchor: (Height: 32, Bottom: 5); Text: "Logo"; }
+      $D.@DustShellSecondaryButton #WallpaperDark { Anchor: (Height: 32, Bottom: 5); Text: "Dark"; }
+      $D.@DustShellSecondaryButton #WallpaperNone { Anchor: (Height: 32); Text: "None"; }
+    }
+
+    Group #IconPackSection {
+      LayoutMode: Top;
+      Anchor: (Bottom: $D.@DustShellSpacing);
+      Label #IconPackLabel { Text: "Icon Pack"; Anchor: (Bottom: 6); Style: (FontSize: 12, TextColor: $D.@DustTextSecondary); }
+      $D.@DustShellSecondaryButton #IconPackDefault { Anchor: (Height: 32, Bottom: 5); Text: "Default"; }
+      $D.@DustShellSecondaryButton #IconPackMono    { Anchor: (Height: 32); Text: "Mono"; }
+    }
+
+    Group #LayoutSection {
+      LayoutMode: Top;
+      Anchor: (Bottom: $D.@DustShellSpacing);
+      Label #LayoutLabel { Text: "App Layout"; Anchor: (Bottom: 6); Style: (FontSize: 12, TextColor: $D.@DustTextSecondary); }
+      $D.@DustShellSecondaryButton #LayoutGrid { Anchor: (Height: 32, Bottom: 5); Text: "Grid"; }
+      $D.@DustShellSecondaryButton #LayoutList { Anchor: (Height: 32); Text: "List"; }
+    }
+
+    Group #SoundSection {
+      LayoutMode: Top;
+      Label #SoundLabel { Text: "Sound Profile"; Anchor: (Bottom: 6); Style: (FontSize: 12, TextColor: $D.@DustTextSecondary); }
+      $D.@DustShellSecondaryButton #SoundNonkia { Anchor: (Height: 32, Bottom: 5); Text: "Nonkia"; }
+      $D.@DustShellSecondaryButton #SoundSilent { Anchor: (Height: 32); Text: "Silent"; }
     }
   }
 }
