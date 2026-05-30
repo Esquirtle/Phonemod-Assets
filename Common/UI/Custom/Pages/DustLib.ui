@@ -165,10 +165,12 @@ $C = "Common.ui";
 
 // App-grid button matching the framework contract: a #APPBUTTONENTRY root
 // holding a #APPBUTTON (bound + icon) and a #APPNAME label (text set at runtime).
-// Per-app files differ ONLY by the icon, passed via @Icon. Keep the @Icon literal
-// in the per-app file so its relative texture path resolves from that file.
+// Per-app files differ ONLY by the icon, passed via @Icon.
+// IMPORTANT: @Icon is consumed HERE, so its relative texture path resolves from
+// THIS file's folder (Pages/), not from the per-app caller. Callers therefore
+// pass e.g. "Phone/Whatgram.png" (relative to Pages/), not "../Whatgram.png".
 @PhoneAppButton = Group {
-  @Icon = "Common/Icons/Default.png";
+  @Icon = "Phone/Whatgram.png";
   LayoutMode: Top;
   FlexWeight: 1;
   Padding: (Horizontal: 3, Vertical: 3);
